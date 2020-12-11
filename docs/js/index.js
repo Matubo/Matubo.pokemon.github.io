@@ -19,7 +19,7 @@ function fetch_request(obj) {
       }
     }
     case "GETSOMEID": {
-      fetch(`https://pokeapi.co/api/v2/pokemon?limit=40&offset=${obj.id}`)
+      fetch(`https://pokeapi.co/api/v2/pokemon?limit=60&offset=${obj.id}`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
