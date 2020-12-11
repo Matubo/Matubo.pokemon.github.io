@@ -23,11 +23,13 @@ function fetch_request(obj) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          for (let i = 0; i < data["results"].length; i++) {
+          let i = 0;
+          while (i != data["results"].length) {
             fetch_request({
               request: "GETONEID",
               url: data["results"][i]["url"],
             });
+            i++;
           }
         });
     }
@@ -36,22 +38,27 @@ function fetch_request(obj) {
 
 function createDOM(data) {
   let result_div = document.getElementById("result");
-  let id;
-  let name_div;
-  let image;
-  name_div = document.createElement("div");
-  name_div.className = "name";
-  name_div.innerHTML = `name: ${data["species"]["name"]}`;
+
+  let id, name_div, image, elem;
+
+  elem = document.createElement("div");
+  elem.className = "card";
 
   id = document.createElement("div");
   id.className = "id";
   id.innerHTML = `id: ${data["id"]}`;
 
+  name_div = document.createElement("div");
+  name_div.className = "name";
+  name_div.innerHTML = `name: ${data["species"]["name"]}`;
+
   image = document.createElement("img");
   image.className = "image";
   image.src = data["sprites"]["front_default"];
 
-  result_div.append(id, name_div, image);
+  elem.append(image, id, name_div);
+
+  result_div.append(elem);
 }
 
 function request() {
