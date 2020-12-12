@@ -3,15 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pockemon</title>
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <div>Номер от 1 до 760, выводится 40 экземпляров</div>
-    <input type="number" id="id" min="1" max="760" />
-    <button onclick="request()">Загрузка</button>
+    <p>Выберите опцию:</p>
+    <select name="form_select" id="form_select">
+      <option value="option1" selected="selected">Один</option>
+      <option value="option2">Диапазон</option>
+    </select>
+    <div id="input_box">
+      <p id="input_about">Номер от 0, элемент вне диапазона вернет ошибку</p>
+      <input type="number" id="id" min="0" value="1" />
+      <input type="number" id="count" min="0" value="1" disabled />
+      <button id="query_button" onclick="request()">Загрузка</button>
+    </div>
     <div id="result"></div>
-    <div>Background фото автора Vincent M.A. Janssen: Pexels</div>
+    <div id="thanks">Background фото автора Vincent M.A. Janssen: Pexels</div>
     <script src="./js/index.js"></script>
   </body>
 </html>

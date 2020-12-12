@@ -1,10 +1,11 @@
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../img/background.jpg");
-  background-size: auto 100vh;
+    url("../img/background.jpg") no-repeat;
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: white;
+  min-height: 100%;
 }
 #result {
   display: flex;
