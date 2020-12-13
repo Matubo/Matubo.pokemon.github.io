@@ -14,14 +14,21 @@ body {
 }
 .card {
   color: black;
-  background-color: blanchedalmond;
+  background-color: rgba(247, 237, 237, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 10vw;
   margin: auto;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+/* .card_id {
+  border-top: 1px solid black;
+}
+.card_name {
+  border-top: 1px solid black;
+}
+ */

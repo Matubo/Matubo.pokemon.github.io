@@ -9,19 +9,33 @@ function test() {
     if (select_elem.value == "option2") {
       change_DOM({ type: "second_option" });
     }
+    if (select_elem.value == "option3") {
+      change_DOM({ type: "third_option" });
+    }
   };
 }
 
 function change_DOM(option) {
   if (option.type == "first_option") {
+    document.getElementById("id").removeAttribute("disabled");
     document.getElementById("count").setAttribute("disabled", "disabled");
+    document.getElementById("name").setAttribute("disabled", "disabled");
     document.getElementById("input_about").innerHTML =
-      "Номер от 0, элемент вне диапазона вернет ошибку.";
+      "Номер от 1, элемент вне диапазона вернет ошибку.";
   }
   if (option.type == "second_option") {
+    document.getElementById("id").removeAttribute("disabled");
     document.getElementById("count").removeAttribute("disabled");
+    document.getElementById("name").setAttribute("disabled", "disabled");
     document.getElementById("input_about").innerHTML =
-      "Номер от 0 и диапазон, элемент вне диапазона вернет ошибку.";
+      "Номер от 1 и диапазон, элемент вне диапазона вернет ошибку.";
+  }
+  if (option.type == "third_option") {
+    document.getElementById("id").setAttribute("disabled", "disabled");
+    document.getElementById("count").setAttribute("disabled", "disabled");
+    document.getElementById("name").removeAttribute("disabled");
+    document.getElementById("input_about").innerHTML =
+      "Имя по английски в любом регистре, элемент вне диапазона вернет ошибку.";
   }
 }
 
@@ -37,8 +51,8 @@ async function request() {
 
   let option = document.getElementById("form_select").value;
   let id = document.getElementById("id").value;
-  console.log(id);
   let count = document.getElementById("count").value;
+  let name = document.getElementById("name").value.toLowerCase();
 
   if (option == "option1") {
     let result = await fetch_request({
@@ -65,6 +79,14 @@ async function request() {
       createDOM(result);
       i++;
     }
+  }
+
+  if (option == "option3") {
+    let result = await fetch_request({
+      request: "GETBYNAME",
+      name: name,
+    });
+    createDOM(result);
   }
 }
 
@@ -96,6 +118,14 @@ async function fetch_request(obj) {
         });
       return result;
     }
+    case "GETBYNAME": {
+      let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${obj.name}`)
+        .then((response) => response.json())
+        .then((data) => {
+          return data;
+        });
+      return result;
+    }
   }
 }
 
@@ -108,15 +138,15 @@ function createDOM(data) {
   elem.className = "card";
 
   id = document.createElement("div");
-  id.className = "id";
+  id.className = "card_id";
   id.innerHTML = `id: ${data["id"]}`;
 
   name_div = document.createElement("div");
-  name_div.className = "name";
+  name_div.className = "card_name";
   name_div.innerHTML = `name: ${data["species"]["name"]}`;
 
   image = document.createElement("img");
-  image.className = "image";
+  image.className = "card_image";
   image.src = data["sprites"]["front_default"];
 
   elem.append(image, id, name_div);
