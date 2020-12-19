@@ -11,24 +11,38 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 .card {
   color: black;
-  background-color: rgba(247, 237, 237, 0.7);
+  background-color: #f7ededb3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 10vw;
+  width: 15vw;
   margin: auto;
   border: 1px solid rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* .card_id {
-  border-top: 1px solid black;
+.card_image {
+  width: 15vw;
 }
-.card_name {
-  border-top: 1px solid black;
+#preloader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100vw;
 }
- */
+#preloader_img {
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  margin: auto;
+}

@@ -9,7 +9,6 @@ app.get("/", (req, res) => {
   res.send(clientPath);
 });
 
-
 app.listen(port, () => {
   console.log(`work on ${port}`);
 });
