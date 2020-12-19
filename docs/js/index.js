@@ -106,11 +106,17 @@ async function request() {
   }
 }
 
+function errors_catching(err) {
+  console.log(err);
+  setPreloaderStatus({ option: "REMOVE" });
+}
+
 async function fetch_request(obj) {
   switch (obj.request) {
     case "GETONEID": {
       let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${obj.id}`)
         .then((response) => response.json())
+        .catch((error) => errors_catching(error))
         .then((data) => {
           return data;
         });
@@ -121,6 +127,7 @@ async function fetch_request(obj) {
         `https://pokeapi.co/api/v2/pokemon?limit=${obj.count}&offset=${obj.id}`
       )
         .then((response) => response.json())
+        .catch((error) => errors_catching(error))
         .then((data) => {
           return data;
         });
@@ -133,6 +140,7 @@ async function fetch_request(obj) {
         .then((responses) => {
           return responses;
         })
+        .catch((error) => errors_catching(error))
         .then((responses) => Promise.all(responses.map((r) => r.json())))
         .then((data) => {
           return data;
