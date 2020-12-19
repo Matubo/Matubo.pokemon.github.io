@@ -163,26 +163,44 @@ async function fetch_request(obj) {
 function createDOM(data) {
   let result_div = document.getElementById("result");
 
-  let id, name_div, image, elem, height, weight;
+  let elem, image, id, table, name_h2, height, weight, td_1, td_2;
 
   elem = document.createElement("div");
   elem.className = "card";
 
-  id = document.createElement("div");
+  table = document.createElement("table");
+  table.className = "card_table";
+
+  name_h2 = document.createElement("h2");
+  name_h2.className = "card_name";
+  name_h2.innerHTML =
+    data["species"]["name"][0].toUpperCase() + data["species"]["name"].slice(1);
+
+  id = document.createElement("tr");
   id.className = "card_id";
-  id.innerHTML = `id: ${data["id"]}`;
+  td_1 = document.createElement("td");
+  td_2 = document.createElement("td");
+  td_1.innerHTML = "id";
+  td_2.innerHTML = data["id"];
+  id.append(td_1, td_2);
 
-  name_div = document.createElement("div");
-  name_div.className = "card_name";
-  name_div.innerHTML = `name: ${data["species"]["name"]}`;
-
-  height = document.createElement("div");
+  height = document.createElement("tr");
   height.className = "card_height";
-  height.innerHTML = `height: ${data["height"]}`;
+  td_1 = document.createElement("td");
+  td_2 = document.createElement("td");
+  td_1.innerHTML = "height";
+  td_2.innerHTML = data["height"];
+  height.append(td_1, td_2);
 
-  weight = document.createElement("div");
+  weight = document.createElement("tr");
   weight.className = "card_weight";
-  weight.innerHTML = `weight: ${data["weight"]}`;
+  td_1 = document.createElement("td");
+  td_2 = document.createElement("td");
+  td_1.innerHTML = "weight";
+  td_2.innerHTML = data["weight"];
+  weight.append(td_1, td_2);
+
+  table.append(id, height, weight);
 
   image = document.createElement("img");
   image.className = "card_image";
@@ -191,7 +209,8 @@ function createDOM(data) {
   } else {
     image.src = "img/noimage.png";
   }
-  elem.append(image, id, name_div, height, weight);
+
+  elem.append(image, name_h2, table);
 
   result_div.append(elem);
 }

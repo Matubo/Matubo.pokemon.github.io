@@ -26,9 +26,25 @@ body {
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: left;
 }
 .card_image {
   width: 15vw;
+}
+.card_name {
+  border-bottom: 1px solid black;
+}
+.card_name,
+.card_table {
+  width: 90%;
+}
+.card_table {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.card_table td {
+  width: 50%;
 }
 #preloader {
   display: none;
