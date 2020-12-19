@@ -108,14 +108,28 @@ async function request() {
 
 function errors_catching(err) {
   console.log(err);
+  let error_elem = document.getElementById("error");
+  let error_code_elem = document.getElementById("error_code");
+  if (err == 404) {
+    error_code_elem.innerHTML = "id не найден";
+  } else error_code_elem.innerHTML = err;
   setPreloaderStatus({ option: "REMOVE" });
+  error.style.cssText = "display: block;";
+  setTimeout(() => {
+    error.style.cssText = "display: none;";
+  }, 2000);
 }
 
 async function fetch_request(obj) {
   switch (obj.request) {
     case "GETONEID": {
       let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${obj.id}`)
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status == 404) {
+            throw response.status;
+          }
+          return response.json();
+        })
         .catch((error) => errors_catching(error))
         .then((data) => {
           return data;
@@ -151,7 +165,12 @@ async function fetch_request(obj) {
 
     case "GETBYNAME": {
       let result = await fetch(`https://pokeapi.co/api/v2/pokemon/${obj.name}`)
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status == 404) {
+            throw response.status;
+          }
+          return response.json();
+        })
         .then((data) => {
           return data;
         });
@@ -160,44 +179,43 @@ async function fetch_request(obj) {
   }
 }
 
+function createTd(name, data) {
+  let td_1 = document.createElement("td");
+  let td_2 = document.createElement("td");
+  td_1.innerHTML = name;
+  td_2.innerHTML = data;
+  return [td_1, td_2];
+}
+
 function createDOM(data) {
   let result_div = document.getElementById("result");
 
-  let elem, image, id, table, name_h2, height, weight, td_1, td_2;
+  let root_elem, image, id, table, name, height, weight, td_1, td_2;
 
-  elem = document.createElement("div");
-  elem.className = "card";
+  root_elem = document.createElement("div");
+  root_elem.className = "card";
 
   table = document.createElement("table");
   table.className = "card_table";
 
-  name_h2 = document.createElement("h2");
-  name_h2.className = "card_name";
-  name_h2.innerHTML =
+  name = document.createElement("h2");
+  name.className = "card_name";
+  name.innerHTML =
     data["species"]["name"][0].toUpperCase() + data["species"]["name"].slice(1);
 
   id = document.createElement("tr");
   id.className = "card_id";
-  td_1 = document.createElement("td");
-  td_2 = document.createElement("td");
-  td_1.innerHTML = "id";
-  td_2.innerHTML = data["id"];
+  [td_1, td_2] = createTd("id", data["id"]);
   id.append(td_1, td_2);
 
   height = document.createElement("tr");
   height.className = "card_height";
-  td_1 = document.createElement("td");
-  td_2 = document.createElement("td");
-  td_1.innerHTML = "height";
-  td_2.innerHTML = data["height"];
+  [td_1, td_2] = createTd("height", data["height"]);
   height.append(td_1, td_2);
 
   weight = document.createElement("tr");
   weight.className = "card_weight";
-  td_1 = document.createElement("td");
-  td_2 = document.createElement("td");
-  td_1.innerHTML = "weight";
-  td_2.innerHTML = data["weight"];
+  [td_1, td_2] = createTd("weight", data["weight"]);
   weight.append(td_1, td_2);
 
   table.append(id, height, weight);
@@ -210,7 +228,7 @@ function createDOM(data) {
     image.src = "img/noimage.png";
   }
 
-  elem.append(image, name_h2, table);
+  root_elem.append(image, name, table);
 
-  result_div.append(elem);
+  result_div.append(root_elem);
 }

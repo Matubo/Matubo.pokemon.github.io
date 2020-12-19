@@ -30,6 +30,7 @@ body {
 }
 .card_image {
   width: 15vw;
+  border-radius: 20px 20px 0 0;
 }
 .card_name {
   border-bottom: 1px solid black;
@@ -61,4 +62,23 @@ body {
   transform: translate(-50%, -50%);
   position: fixed;
   margin: auto;
+}
+#error {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100vw;
+}
+#error_code {
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.25em;
 }
