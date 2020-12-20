@@ -1,5 +1,7 @@
+//лисенер события изменения опции селектора
 document.addEventListener("DOMContentLoaded", changeOption());
 
+//убрать/добавить прелоадер
 function setPreloaderStatus(obj) {
   let preloader = document.getElementById("preloader");
   if (obj.option == "REMOVE") {
@@ -10,6 +12,7 @@ function setPreloaderStatus(obj) {
   }
 }
 
+//реакция на событие изменения опции селектора, вызов функции изменения DOM
 function changeOption() {
   let select_elem = document.getElementById("form_select");
   select_elem.onchange = function () {
@@ -25,6 +28,7 @@ function changeOption() {
   };
 }
 
+//изменение DOM при смене опции селектора(form_selector)
 function change_DOM(option) {
   if (option.type == "first_option") {
     document.getElementById("id").removeAttribute("disabled");
@@ -54,6 +58,7 @@ function clear_result_box() {
   }
 }
 
+//первичная обработка события кнопки, запроса данных
 async function request() {
   clear_result_box();
 
@@ -106,12 +111,11 @@ async function request() {
   }
 }
 
+//обработка и вывод ошибки
 function errors_catching(err) {
-  console.log(err);
-  let error_elem = document.getElementById("error");
   let error_code_elem = document.getElementById("error_code");
   if (err == 404) {
-    error_code_elem.innerHTML = "id не найден";
+    error_code_elem.innerHTML = "id/имя не найден";
   } else error_code_elem.innerHTML = err;
   setPreloaderStatus({ option: "REMOVE" });
   error.style.cssText = "display: block;";
@@ -120,6 +124,7 @@ function errors_catching(err) {
   }, 2000);
 }
 
+//fetch запросы
 async function fetch_request(obj) {
   switch (obj.request) {
     case "GETONEID": {
@@ -171,6 +176,7 @@ async function fetch_request(obj) {
           }
           return response.json();
         })
+        .catch((error) => errors_catching(error))
         .then((data) => {
           return data;
         });
@@ -179,6 +185,7 @@ async function fetch_request(obj) {
   }
 }
 
+//создание и вовзрат td элементов
 function createTd(name, data) {
   let td_1 = document.createElement("td");
   let td_2 = document.createElement("td");
@@ -187,6 +194,7 @@ function createTd(name, data) {
   return [td_1, td_2];
 }
 
+//построение DOM карточек
 function createDOM(data) {
   let result_div = document.getElementById("result");
 
