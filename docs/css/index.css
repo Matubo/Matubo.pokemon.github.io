@@ -5,8 +5,10 @@ body {
   background-position: center;
   background-attachment: fixed;
   color: white;
-  height: 100vh;
-  width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+  padding: 10px;
 }
 
 #result {
@@ -35,7 +37,7 @@ body {
   border-radius: 20px 20px 0 0;
 }
 .card_name {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 }
 .card_name,
 .card_table {
