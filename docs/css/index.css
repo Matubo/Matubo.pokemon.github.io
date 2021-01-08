@@ -86,17 +86,39 @@ body {
   font-weight: bold;
   font-size: 1.25em;
 }
-@media (max-width: 768px) {
+@media handheld and (max-height: 768px) and (orientation: landscape) {
   .card {
     width: 43vw;
+    font-size: 6vw;
   }
   .card_image {
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 43vw;
+    font-size: 6vw;
+  }
+  .card_image {
+    width: 100%;
+  }
+}
+
 @media (max-width: 480px) {
   .card {
     width: 80vw;
+    font-size: 6vw;
+  }
+  .card_image {
+    width: 100%;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .card {
+    font-size: 6vh;
   }
   .card_image {
     width: 100%;
