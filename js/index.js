@@ -50,7 +50,7 @@ function change_DOM(option) {
       "Имя по английски в любом регистре.";
   }
 }
-
+//удаляем предидущие результаты
 function clear_result_box() {
   let element = document.getElementById("result");
   while (element.firstChild) {
