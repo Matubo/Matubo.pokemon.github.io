@@ -119,6 +119,7 @@ body {
 
 @media (max-height: 480px) and (orientation: landscape) {
   .card {
+    width: 43vw;
     font-size: 6vh;
   }
   .card_image {
