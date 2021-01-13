@@ -18,7 +18,7 @@ It allows you to display information about Pokémon based on the criteria that l
 
 ### Search criteria:
 - id in database
-- id range в базе in database
+- id range in database
 - name
 
 ### Link:
