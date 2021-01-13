@@ -10,3 +10,16 @@
 
 ### Ссылка:
  - [matubo.github.io/pokemonrequest/](https://matubo.github.io/pokemonrequest/)
+
+# pokemonrequest
+
+This page sends requests to RESTful API - [pokeapi.co](https://pokeapi.co/).
+It allows you to display information about Pokémon based on the criteria that listed below.
+
+### Search criteria:
+- id in database
+- id range в базе in database
+- name
+
+### Link:
+ - [matubo.github.io/pokemonrequest/](https://matubo.github.io/pokemonrequest/)
