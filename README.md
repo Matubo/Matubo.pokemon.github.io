@@ -1,4 +1,4 @@
-# pokemonrestAPI
+# pokemonrequest
 
 Страница обращается к открытому RESTful API - [pokeapi.co](https://pokeapi.co/).
 Она позволяет найти и вывести информацию о покемонах по кретериям указанным ниже.
@@ -9,4 +9,4 @@
 - имя
 
 ### Ссылка:
- - [matubo.github.io/pokemonrestAPI/](https://matubo.github.io/pokemonrestAPI/)
+ - [matubo.github.io/pokemonrequest/](https://matubo.github.io/pokemonrequest/)
