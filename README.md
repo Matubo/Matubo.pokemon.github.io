@@ -9,7 +9,7 @@
 - имя
 
 ### Ссылка:
- - [matubo.github.io/pokemonrequest/](https://matubo.github.io/pokemonrequest/)
+ - [matubo.github.io/pokemonApiRequest/](https://matubo.github.io/pokemonApiRequest/)
 
 # pokemonApiRequest
 
@@ -22,4 +22,4 @@ It allows you to display information about Pokémon based on the criteria that l
 - name
 
 ### Link:
- - [matubo.github.io/pokemonrequest/](https://matubo.github.io/pokemonrequest/)
+ - [matubo.github.io/pokemonApiRequest/](https://matubo.github.io/pokemonApiRequest/)
