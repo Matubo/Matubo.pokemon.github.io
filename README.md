@@ -9,7 +9,7 @@
 - имя
 
 ### Ссылка:
- - [matubo.github.io/pokemonApiRequest/](https://matubo.github.io/pokemonApiRequest/)
+ - [matubo.github.io/pokemon_handbook/](https://matubo.github.io/pokemon_handbook/)
 
 # pokemonApiRequest
 
