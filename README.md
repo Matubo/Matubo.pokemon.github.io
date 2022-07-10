@@ -1,4 +1,4 @@
-# pokemonApiRequest
+# pokemon_handbook
 
 Страница обращается к открытому RESTful API - [pokeapi.co](https://pokeapi.co/).
 Она позволяет найти и вывести информацию о покемонах по кретериям указанным ниже.
@@ -22,4 +22,4 @@ It allows you to display information about Pokémon based on the criteria that l
 - name
 
 ### Link:
- - [matubo.github.io/pokemonApiRequest/](https://matubo.github.io/pokemonApiRequest/)
+ - [matubo.github.io/pokemon_handbook/](https://matubo.github.io/pokemon_handbook/)
